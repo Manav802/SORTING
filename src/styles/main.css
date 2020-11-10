@@ -11,18 +11,22 @@
     margin: 0 1px;
     justify-content: center; }
 
-.button_menu {
-  background: #fff;
+.menu {
+  background-color: blue;
   height: 50px; }
-  .button_menu .btn {
+  .menu .btn {
     color: #fff; }
+    .menu .btn:hover {
+      color: red; }
 
 .footer {
   color: #fff;
   text-align: center;
   background-color: black;
-  height: 7%;
-  margin-top: 0; }
+  height: 50px; }
+
+.space {
+  margin-top: 0px; }
 
 body {
   background-color: #fcf5e8; }

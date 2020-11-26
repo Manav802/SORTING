@@ -1,6 +1,10 @@
 import React from "react";
 import { mergeSortAnimation} from "./Algorithms";
+import {getAnimations} from "./MergeSort";
 import { useState } from "react";
+
+
+
  function Body() {
      const initialCount = 0;
     let [array,setArray]= useState([initialCount]);
@@ -23,12 +27,13 @@ import { useState } from "react";
                 }
                 
                 }
- const ANIMATION_SPEED_MS = 1;
+ const ANIMATION_SPEED_MS = 10;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
+const FINAL_COLOUR ='limegreen';
 
     const mergeSort =()=>{
-        const animations=  mergeSortAnimation(array);
+        const animations=  getAnimations(array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array_bars');
             const isColorChange = i % 3 !== 2;
@@ -36,7 +41,7 @@ const SECONDARY_COLOR = 'red';
               const [barOneIdx, barTwoIdx] = animations[i];
               const barOneStyle = arrayBars[barOneIdx].style;
               const barTwoStyle = arrayBars[barTwoIdx].style;
-              const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+              const color = i % 3 === 0 ? SECONDARY_COLOR : FINAL_COLOUR;
               setTimeout(() => {
                 barOneStyle.backgroundColor = color;
                 barTwoStyle.backgroundColor = color;
@@ -57,7 +62,7 @@ const SECONDARY_COLOR = 'red';
        <div className= " array_section">
        
        {array.map((value,index)=>(
-           <div className="array_bars" key={index} style={{height:`${value}px` ,}}></div> 
+           <div className="array_bars" key={index} style={{height:`${value}px` , backgroundColor: PRIMARY_COLOR}}></div> 
        ))}
 
        </div>

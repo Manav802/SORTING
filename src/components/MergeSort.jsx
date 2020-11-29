@@ -7,19 +7,25 @@ export function getAnimations(array){
     const auxarray = array.slice();
     mergeSort(array, 0, array.length-1,auxarray, animations);
     return animations;
+    
 }
 
 function mergeSort(
-    mainArray,start, end, auxarray, animations
+    auxarray,start, end, mainArray, animations
 ){
     if (start=== end) return;
+    
+    
     const middle = Math.floor((start+end)/2);
-    mergeSort(auxarray, start, middle, mainArray,animations);
-    mergeSort(auxarray, middle+1,end, mainArray,animations);
+    mergeSort(mainArray, start, middle, auxarray,animations);
+    mergeSort(mainArray, middle+1,end, auxarray,animations);
+    console.log(mainArray);
+    console.log(auxarray);
     domerge(mainArray, start, middle,end, auxarray, animations);
 }
 
 function domerge(mainArray, start, middle, end, auxarray,animations){
+ 
     let k = start;
     let i = start;
     let j = middle + 1;
@@ -27,7 +33,7 @@ function domerge(mainArray, start, middle, end, auxarray,animations){
       
       animations.push([i, j]);
       animations.push([i, j]);
-     
+  
       if (auxarray[i] <= auxarray[j]) {
         
         animations.push([k, auxarray[i]]);
@@ -37,6 +43,7 @@ function domerge(mainArray, start, middle, end, auxarray,animations){
         animations.push([k, auxarray[j]]);
         mainArray[k++] = auxarray[j++];
       }
+    
     }
     while (i <= middle) {
       

@@ -1,14 +1,26 @@
-.array_section {
-  position: absolute;
-  max-width: 90%;
-  left: 50px;
-  margin: 2%;
-  margin-bottom: 0;
-  .array_bars {
-    display: inline-block;
-    background-color: turquoise;
-    width: 3px;
-    margin: 0 1px;
-    justify-content: center;
+body {
+  nav {
+    margin: 0;
+  }
+  .content {
+    max-height: 600px;
+    overflow-x: hidden;
+    .array_section {
+      position: absolute;
+      justify-content: center;
+
+      bottom: 0;
+      max-width: 90%;
+
+      margin: 3%;
+
+      .array_bars {
+        display: inline-block;
+        background-color: turquoise;
+
+        margin: 0 1px;
+        justify-content: center;
+      }
+    }
   }
 }

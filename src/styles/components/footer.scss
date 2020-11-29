@@ -3,6 +3,7 @@
   height: 50px;
   .btn {
     color: #fff;
+    display: flex;
     &:hover {
       color: red;
     }

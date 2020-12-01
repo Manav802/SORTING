@@ -1,21 +1,9 @@
-.menu {
-  background-color: blue;
-  height: 50px;
-  .btn {
-    color: #fff;
-    display: flex;
-    &:hover {
-      color: red;
-    }
-  }
-}
-
 .footer {
   color: #fff;
   text-align: center;
-  background-color: black;
+  background-color: #343a40;
   height: 50px;
 }
 .space {
-  margin-top: 0px;
+  margin-top: 10px;
 }

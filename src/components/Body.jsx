@@ -2,7 +2,7 @@ import React from "react";
 
 import {getAnimations} from "./MergeSort";
 import { useState } from "react";
-
+import {quicksort} from "./quickSort";
 
 
  function Body() {
@@ -14,7 +14,7 @@ import { useState } from "react";
         array.length=0;
         // console.log(array); 
         resetArray();
-        
+       
         
     }
     const resetArray =()=>{
@@ -26,17 +26,25 @@ import { useState } from "react";
                 let randomNumber = Math.floor(Math.random() * 600 ) + 5;
                 setArray(newarray=>[...newarray,randomNumber]);
                 }
-        const arraybars = document.getElementsByClassName('array_bars');
        
-                
+       
                 }
                 const width= 1200/array.length;
-                console.log(width);
- const ANIMATION_SPEED_MS = 10;
+               
+ const ANIMATION_SPEED_MS = 1000;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 const FINAL_COLOR ='limegreen';
-
+//quick sort  code
+const quickSort =()=>{
+console.log(array);
+  
+  quicksort(array,0,array.length);
+  console.log(array);
+  
+ 
+}
+//merge sort code
     const mergeSort =()=>{
       console.log(array);
     
@@ -99,12 +107,13 @@ const FINAL_COLOR ='limegreen';
     return(
         
        <div >
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <nav  id="bt"class="navbar navbar-expand-lg navbar-dark bg-dark">
      
-  <a class="navbar-brand" href="#">Sorting Visualizer</a>
+  <a class="bt navbar-brand" href="#">Sorting Visualizer</a>
  
-  <button className="btn text-white " onClick={callMe}>RESEST ARRAY</button>
-        <button className="btn text-white" onClick={mergeSort}>MERGE SORT</button>
+  <button className="bt text-white " onClick={callMe}>RESEST ARRAY</button>
+        <button className="bt text-white" onClick={mergeSort}>MERGE SORT</button>
+        <button className="bt text-white" onClick={quickSort}>QUICK SORT</button>
   
 </nav>
 
@@ -119,8 +128,8 @@ const FINAL_COLOR ='limegreen';
        
         <div className="footer fixed-bottom">
       
-      SRISHTY TAKYAR_2020  Sorting visualizer_© 
-    
+      <div className="space">SRISHTY TAKYAR_2020  Sorting visualizer_© 
+    </div>
         </div> 
         </div>
          </div>

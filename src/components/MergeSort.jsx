@@ -1,64 +1,64 @@
 
-import React from 'react';
+
 
 export function getAnimations(array){
-    const animations =[];
+    const animation =[];
     if (array.length<=1) return array;
     const auxarray = array.slice();
-    mergeSort(array, 0, array.length-1,auxarray, animations);
-    return animations;
+    mergeSort(array, 0, array.length-1,auxarray, animation);
+    return animation;
     
 }
 
 function mergeSort(
-    auxarray,start, end, mainArray, animations
+    auxarray,start, end, mainArray, animation
 ){
     if (start=== end) return;
     
     
     const middle = Math.floor((start+end)/2);
-    mergeSort(mainArray, start, middle, auxarray,animations);
-    mergeSort(mainArray, middle+1,end, auxarray,animations);
+    mergeSort(mainArray, start, middle, auxarray,animation);
+    mergeSort(mainArray, middle+1,end, auxarray,animation);
     console.log(mainArray);
     console.log(auxarray);
-    domerge(mainArray, start, middle,end, auxarray, animations);
+    domerge(mainArray, start, middle,end, auxarray, animation);
 }
 
-function domerge(mainArray, start, middle, end, auxarray,animations){
+function domerge(mainArray, start, middle, end, auxarray,animation){
  
     let k = start;
     let i = start;
     let j = middle + 1;
     while (i <= middle && j <= end) {
       
-      animations.push([i, j]);
-      animations.push([i, j]);
+      animation.push([i, j]);
+      animation.push([i, j]);
   
       if (auxarray[i] <= auxarray[j]) {
         
-        animations.push([k, auxarray[i]]);
+        animation.push([k, auxarray[i]]);
         mainArray[k++] = auxarray[i++];
       } else {
         
-        animations.push([k, auxarray[j]]);
+        animation.push([k, auxarray[j]]);
         mainArray[k++] = auxarray[j++];
       }
     
     }
     while (i <= middle) {
       
-      animations.push([i, i]);
-      animations.push([i, i]);
+      animation.push([i, i]);
+      animation.push([i, i]);
      
-      animations.push([k, auxarray[i]]);
+      animation.push([k, auxarray[i]]);
       mainArray[k++] = auxarray[i++];
     }
     while (j <= end) {
       
-      animations.push([j, j]);
-      animations.push([j, j]);
+      animation.push([j, j]);
+      animation.push([j, j]);
       
-      animations.push([k, auxarray[j]]);
+      animation.push([k, auxarray[j]]);
       mainArray[k++] = auxarray[j++];
     }
   } 

@@ -27,17 +27,17 @@ function partitionLow (arr, low, high, animations)  {
     while(i<j){
  do{
    i++;
- }while(arr[i]<=pivot);
+ }while(arr[i+1]<=pivot);
  do{
   j--;
-}while(arr[i]>pivot);
+}while(arr[j]>pivot);
 
 if (i<j){
   swap(arr,i,j,animations);
 }
     }
   
-    swap(arr,high, pivot,animations);
+    swap(arr,high, low,animations);
     //Return the pivot index
     return high;
   }

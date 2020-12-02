@@ -2,7 +2,7 @@ import React from "react";
 
 import {getAnimations} from "./MergeSort";
 import { useState } from "react";
-import {quicksort} from "./quickSort";
+import {quicksort} from "./quick";
 
 
  function Body() {
@@ -31,7 +31,7 @@ import {quicksort} from "./quickSort";
                 }
                 const width= 1200/array.length;
                
- const ANIMATION_SPEED_MS = 1000;
+ const ANIMATION_SPEED_MS = 10;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 const FINAL_COLOR ='limegreen';
@@ -39,7 +39,7 @@ const FINAL_COLOR ='limegreen';
 const quickSort =()=>{
 console.log(array);
   
-  quicksort(array,0,array.length);
+  quicksort(array,0,array.length-1);
   console.log(array);
   
  

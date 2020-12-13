@@ -1,5 +1,5 @@
 import React from "react";
-
+import {linearSearch} from "./linear";
 import {getAnimations} from "./MergeSort";
 import { useState } from "react";
 import {quicksort} from "./quick";
@@ -8,13 +8,33 @@ import {quicksort} from "./quick";
  function Body() {
      const initialCount = 0;
     let [array,setArray]= useState([initialCount]);
-    
+    const ANIMATION_SPEED_MS = 10;
+ const PRIMARY_COLOR = 'turquoise';
+const SECONDARY_COLOR = 'red';
+const FINAL_COLOR ='limegreen';
+
+//basically, initially resest is hidden and display is visible which on click makes reset visible and hides itself, resest 
+//on click refreshes the page to get initial setting (resest is hidden and display is visible) back.
+
+// reset button is only used to refresh the page to solve the color problem
+    const generateArray=()=>{
+
+      window.location.reload();
+
+    }
 
     const callMe=()=>{
+      
         array.length=0;
-        // console.log(array); 
-        resetArray();
-       
+        
+      resetArray();
+      //it hiddes itself 
+      document.getElementById('togglee').style.visibility = 'hidden';
+      document.getElementById('togglee2').style.visibility = 'visible';  /*bcz we want it to show when we need to regenerate the array*/
+    
+     //reset array button is hidden and becomes visible if array is generated once.Then, on refreshing page again it becomes
+     //hidden by defaut and display array button takes over and generates the array.
+     
         
     }
     const resetArray =()=>{
@@ -25,16 +45,16 @@ import {quicksort} from "./quick";
                 
                 let randomNumber = Math.floor(Math.random() * 600 ) + 5;
                 setArray(newarray=>[...newarray,randomNumber]);
+              //   const arrayBar = document.getElementsByClassName('array_bars');
+              //    const barStyle= arrayBar[i].style;
+              //  barStyle.backgroundColor = 'turquoise' ;
                 }
-       
-       
+         
+       return 0;
                 }
                 const width= 1200/array.length;
                
- const ANIMATION_SPEED_MS = 10;
- const PRIMARY_COLOR = 'turquoise';
-const SECONDARY_COLOR = 'red';
-const FINAL_COLOR ='limegreen';
+ 
 //quick sort  code
 const quickSort =()=>{
 console.log(array);
@@ -52,7 +72,7 @@ console.log(array);
   }
   else{
    let count=i;
-    if(value==0){
+    if(value===0){
 
     const barStyle = arrayBars[value].style;
     setTimeout(() => {
@@ -66,6 +86,34 @@ console.log(array);
   
  
 }
+
+//linear search code
+
+
+
+const linear=()=>{
+  console.log(array);
+ 
+  const key= prompt("which number are you looking for?");  //prompt returns string as output 
+  const animations= linearSearch(array,key);
+  
+  console.log(animations);
+ 
+
+  for (let i = 0; i < animations.length; i++) {
+    const arrayBars = document.getElementsByClassName('array_bars');
+    const [barIdx,barIndex] = animations[i];
+
+    if(barIdx>=0){
+    const barStyle = arrayBars[barIdx].style;
+    setTimeout(() => {
+      barStyle.backgroundColor = FINAL_COLOR;
+     
+    }, i * ANIMATION_SPEED_MS);
+  }
+}
+}
+
 //merge sort code
     const mergeSort =()=>{
       console.log(array);
@@ -133,9 +181,12 @@ console.log(array);
      
   <a class="bt navbar-brand" href="#">Sorting Visualizer</a>
  
-  <button className="bt text-white " onClick={callMe}>RESEST ARRAY</button>
+  <button className="bt text-white "  id="togglee2"onClick={generateArray} style={{visibility:'hidden'}}>RESET ARRAY</button> 
+  <button className="bt text-white " id="togglee" onClick={callMe}>DISPLAY ARRAY</button>
         <button className="bt text-white" onClick={mergeSort}>MERGE SORT</button>
         <button className="bt text-white" onClick={quickSort}>QUICK SORT</button>
+        <button className="bt text-white" onClick={linear}>LINEAR SEARCH</button>
+  
   
 </nav>
 
@@ -144,7 +195,7 @@ console.log(array);
        <div className= " array_section">
      
        {array.map((value,index)=>(
-           <div className="array_bars" key={index} style={{backgroundColor: PRIMARY_COLOR, height:`${value}px`, width: `${width}px`} }></div> 
+           <div className="array_bars" key={index} style={{ backgroundColor:PRIMARY_COLOR, height:`${value}px`, width: `${width}px`} }></div> 
        ))}
 
        

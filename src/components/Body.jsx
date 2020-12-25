@@ -93,8 +93,9 @@ console.log(array);
 
 const linear=()=>{
   console.log(array);
- 
+ const count=0;
   const key= prompt("which number are you looking for?");  //prompt returns string as output 
+  if(key>0){
   const animations= linearSearch(array,key);
   
   console.log(animations);
@@ -102,16 +103,31 @@ const linear=()=>{
 
   for (let i = 0; i < animations.length; i++) {
     const arrayBars = document.getElementsByClassName('array_bars');
-    const [barIdx,barIndex] = animations[i];
+    const [barIdx,bool] = animations[i];
 
     if(barIdx>=0){
     const barStyle = arrayBars[barIdx].style;
     setTimeout(() => {
-      barStyle.backgroundColor = FINAL_COLOR;
-     
-    }, i * ANIMATION_SPEED_MS);
+      // const color = bool == 'true' ? 'purple' : 'red';
+      if(bool=='true'){
+      barStyle.backgroundColor = 'purple';
+      count++;
+      
+      }
+      else{
+       barStyle.backgroundColor='red'; 
+      }
+
+    }, i * ANIMATION_SPEED_MS*100);
+
   }
 }
+
+if(count){
+  document.getElementById('result').style.visibility = 'visible';
+}
+
+  }
 }
 
 //merge sort code
@@ -204,6 +220,11 @@ const linear=()=>{
       <div className="space">SRISHTY TAKYAR_2020  Sorting visualizer_© 
     </div>
         </div> 
+        <div id='result' className="text3d" style={{visibility:'hidden'}}>
+          <h1>
+          MATCH FOUND!!!
+          </h1>
+        </div>
         </div>
          </div>
          

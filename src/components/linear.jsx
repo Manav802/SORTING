@@ -1,10 +1,14 @@
 export function linearSearch(array, key){
     const animation = [];
     for(let i = 0; i < array.length; i++){
+
         if(array[i] == key){   // == will be used because we donot know the data types( === req datatypes to be exactly same )
 
-            animation.push([i,i]);
+            animation.push([i,'true']);
           
+        }
+        else{
+            animation.push([i,'false']);
         }
     }
     // If results array is empty, return -1

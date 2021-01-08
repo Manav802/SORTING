@@ -8,7 +8,7 @@ import {getAnimation} from "./quick";
  function Body() {
      const initialCount = 0;
     let [array,setArray]= useState([initialCount]);
-    const ANIMATION_SPEED_MS = 20;
+    const ANIMATION_SPEED_MS = 50;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 const FINAL_COLOR ='limegreen';
@@ -78,7 +78,7 @@ console.log(array);
     const barStyle = arrayBars[value2].style;
     setTimeout(() => {
 
-      barStyle.backgroundColor = FINAL_COLOR;
+      barStyle.backgroundColor = 'purple';
     
     }, i * ANIMATION_SPEED_MS);
   }

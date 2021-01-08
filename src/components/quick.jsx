@@ -32,15 +32,16 @@ export function quick(arr, left, right, animation) {
 	
 		if (arr.length > 1)	{
 			index = sortingUsingPivot(arr, left, right, animation);
+		
 	
 			if (left < index - 1) {
 				quick(arr, left, index - 1, animation);                         //earlier every time here new animation was formed now will will pass onle one to all the recurssive calls.
 			}
 	
-			if (index < right) {
-				quick(arr, index, right, animation);
+			if (index <= right) {                          //here equal sign was missing so last value wasnt getting swapped leading to no color change
+				quick(arr, index, right, animation);          //and creating a isue so that we had to use y.
 			}
-			animation.push(['y',right]);      //In while r-- happens so last element does not get swapped with itself so it's color doesnt change.
+			// animation.push(['y',right]);      //In while r-- happens so last element does not get swapped with itself so it's color doesnt change.
 		}
 		}
 function sortingUsingPivot(arr, l, r,animation) {
@@ -55,7 +56,7 @@ function sortingUsingPivot(arr, l, r,animation) {
 		
 			l++;
 			//when we want to do it turn red we will pass
-			// true then it will know ki comparison hora hai
+			// x then it will know ki comparison hora hai
 	
 		}
 
@@ -74,6 +75,7 @@ function sortingUsingPivot(arr, l, r,animation) {
     
   
 	return l;
+	
 }
 //function with less arguments
 // function swap(arr, leftIndex, rightIndex) {

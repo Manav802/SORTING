@@ -2,13 +2,13 @@ import React from "react";
 import {linearSearch} from "./linear";
 import {getAnimations} from "./MergeSort";
 import { useState } from "react";
-import {quicksort} from "./quick";
+import {getAnimation} from "./quick";
 
 
  function Body() {
      const initialCount = 0;
     let [array,setArray]= useState([initialCount]);
-    const ANIMATION_SPEED_MS = 10;
+    const ANIMATION_SPEED_MS = 20;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 const FINAL_COLOR ='limegreen';
@@ -59,27 +59,39 @@ const FINAL_COLOR ='limegreen';
 const quickSort =()=>{
 console.log(array);
   
-  const animation=quicksort(array,0,array.length-1);
+  const animation=getAnimation(array,0,array.length-1);
+  console.log(array);
+  console.log(animation);
+  
   for (let i = 0; i < animation.length; i++) {
     const arrayBars = document.getElementsByClassName('array_bars');
-  const [bool,value]=animation[i];
-  if(bool){
-    const barStyle = arrayBars[value].style;
+  const [value1,value2]= animation[i];
+  if(value1==='x'){
+    const barStyle = arrayBars[value2].style;
     setTimeout(() => {
+
       barStyle.backgroundColor = SECONDARY_COLOR;
     
     }, i * ANIMATION_SPEED_MS);
   }
-  else{
-   let count=i;
-    if(value===0){
-
-    const barStyle = arrayBars[value].style;
+  else if(value1==='y'){
+    const barStyle = arrayBars[value2].style;
     setTimeout(() => {
+
       barStyle.backgroundColor = FINAL_COLOR;
-   
+    
     }, i * ANIMATION_SPEED_MS);
   }
+  else{
+    const barStyle = arrayBars[value1].style;
+   
+
+    setTimeout(() => {
+
+     barStyle.backgroundColor = FINAL_COLOR;
+     barStyle.height=`${value2}px`;
+    }, i * ANIMATION_SPEED_MS);
+  
   }
   }
 
@@ -92,8 +104,10 @@ console.log(array);
 
 
 const linear=()=>{
+
   console.log(array);
- const count=0;
+
+  let count=0;
   const key= prompt("which number are you looking for?");  //prompt returns string as output 
   if(key>0){
   const animations= linearSearch(array,key);
@@ -153,7 +167,7 @@ if(count){
             } else {
               setTimeout(() => {
                 const [barOneIdx, newHeight] = animations[i];
-                // console.log(barOneIdx,newHeight);
+               
                 const barOneStyle = arrayBars[barOneIdx].style;
                 barOneStyle.backgroundColor = FINAL_COLOR;
                 barOneStyle.height = `${newHeight}px`;

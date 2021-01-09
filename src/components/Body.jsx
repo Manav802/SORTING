@@ -6,9 +6,9 @@ import {getAnimation} from "./quick";
 
 
  function Body() {
-     const initialCount = 0;
+     const initialCount = 10;  //test number for searching
     let [array,setArray]= useState([initialCount]);
-    const ANIMATION_SPEED_MS = 50;
+    const ANIMATION_SPEED_MS = 30;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 const FINAL_COLOR ='limegreen';
@@ -44,7 +44,7 @@ const FINAL_COLOR ='limegreen';
             for (let i = 0; i < size; i++) {
                 
                 let randomNumber = Math.floor(Math.random() * 600 ) + 5;
-                setArray(newarray=>[...newarray,randomNumber]);
+                setArray((Array)=>[...Array,randomNumber]);
               //   const arrayBar = document.getElementsByClassName('array_bars');
               //    const barStyle= arrayBar[i].style;
               //  barStyle.backgroundColor = 'turquoise' ;
@@ -53,13 +53,19 @@ const FINAL_COLOR ='limegreen';
        return 0;
                 }
                 const width= 1200/array.length;
-               
+                const display_result=(id_name)=>{
+                 
+                  
+                 setTimeout(document.getElementById(id_name).style.visibility = 'visible', 5000); 
+              
+            
+                }       
  
 //quick sort  code
-const quickSort =()=>{
+const quickSort =async()=>{
 console.log(array);
   
-  const animation=getAnimation(array,0,array.length-1);
+  const animation=getAnimation(array);
   console.log(array);
   console.log(animation);
   
@@ -74,14 +80,14 @@ console.log(array);
     
     }, i * ANIMATION_SPEED_MS);
   }
-  else if(value1==='y'){
-    const barStyle = arrayBars[value2].style;
-    setTimeout(() => {
+  // else if(value1==='y'){
+  //   const barStyle = arrayBars[value2].style;
+  //   setTimeout(() => {
 
-      barStyle.backgroundColor = 'purple';
+  //     barStyle.backgroundColor = 'purple';
     
-    }, i * ANIMATION_SPEED_MS);
-  }
+  //   }, i * ANIMATION_SPEED_MS);
+  // }
   else{
     const barStyle = arrayBars[value1].style;
    
@@ -90,7 +96,7 @@ console.log(array);
 
      barStyle.backgroundColor = FINAL_COLOR;
      barStyle.height=`${value2}px`;
-    }, i * ANIMATION_SPEED_MS);
+    }, i * ANIMATION_SPEED_MS*10);
   
   }
   }
@@ -98,6 +104,7 @@ console.log(array);
   
  
 }
+quickSort.then(display_result('DISPLAY_RESULT_SORT'));
 
 //linear search code
 
@@ -108,7 +115,7 @@ const linear=()=>{
   console.log(array);
 
   let count=0;
-  const key= prompt("which number are you looking for?");  //prompt returns string as output 
+  const key= prompt("which Number are you looking for?");  //prompt returns string as output 
   if(key>0){
   const animations= linearSearch(array,key);
   
@@ -132,13 +139,16 @@ const linear=()=>{
        barStyle.backgroundColor='red'; 
       }
 
-    }, i * ANIMATION_SPEED_MS*100);
+    }, i * ANIMATION_SPEED_MS*10);
 
   }
 }
 
 if(count){
-  document.getElementById('result').style.visibility = 'visible';
+  display_result('DISPLAY_RESULT_LS');
+}
+else{
+  display_result('DISPLAY_RESULT_LS2');
 }
 
   }
@@ -182,9 +192,11 @@ if(count){
       // if(output){
       //  sorted();
       // }
-          
+      display_result('DISPLAY_RESULT_SORT');   
          
     }
+
+    
     function arraysAreEqual(arrayOne, arrayTwo) {
       if (arrayOne.length !== arrayTwo.length) return false;
       for (let i = 0; i < arrayOne.length; i++) {
@@ -221,8 +233,14 @@ if(count){
 </nav>
 
        <div className="content">
+       <div>
+       <h1 ID="DISPLAY_RESULT_LS" style={{visibility:'hidden'}}>KUDOS! MATCH FOUND.</h1>
+       <h1 ID="DISPLAY_RESULT_SORT" style={{visibility:'hidden'}}> SORTED!✌️</h1>
+       <h1 ID="DISPLAY_RESULT_LS2" style={{visibility:'hidden'}}>OOPS! NO MATCH.</h1>
+       </div>
 
        <div className= " array_section">
+      
      
        {array.map((value,index)=>(
            <div className="array_bars" key={index} style={{ backgroundColor:PRIMARY_COLOR, height:`${value}px`, width: `${width}px`} }></div> 
@@ -234,11 +252,7 @@ if(count){
       <div className="space">SRISHTY TAKYAR_2020  Sorting visualizer_© 
     </div>
         </div> 
-        <div id='result' className="text3d" style={{visibility:'hidden'}}>
-          <h1>
-          MATCH FOUND!!!
-          </h1>
-        </div>
+        
         </div>
          </div>
          

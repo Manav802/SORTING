@@ -56,7 +56,7 @@ const FINAL_COLOR ='limegreen';
                   
  
 //quick sort  code
-const quickSort =()=>{
+const quickSort =async()=>{
 console.log(array);
   
   const animation=getAnimation(array);
@@ -98,6 +98,7 @@ console.log(array);
   
  
 }
+quickSort.then(display_result('DISPLAY_RESULT_SORT'));
 
 
 //linear search code
@@ -187,6 +188,7 @@ const linear=()=>{
       //  sorted();
       // }
      
+      display_result('DISPLAY_RESULT_SORT');   
          
     }
 

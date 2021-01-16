@@ -240,9 +240,10 @@ const linear=()=>{
 
        <div className="content">
        <div>
-       <h1 ID="DISPLAY_RESULT_LS" style={{visibility:'hidden'}}>KUDOS! MATCH FOUND.</h1>
+      
        <h1 ID="DISPLAY_RESULT_SORT" style={{visibility:'hidden'}}> SORTED!✌️</h1>
        <h1 ID="DISPLAY_RESULT_LS2" style={{visibility:'hidden'}}>OOPS! NO MATCH.</h1>
+       <h1 ID="DISPLAY_RESULT_LS" style={{visibility:'hidden'}}>KUDOS! MATCH FOUND.</h1>
        </div>
 
        <div className= " array_section">

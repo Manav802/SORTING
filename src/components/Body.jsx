@@ -6,9 +6,9 @@ import {getAnimation} from "./quick";
 
 
  function Body() {
-     const initialCount = 10;  //test number for searching
+     const initialCount = 0;  //test number for searching
     let [array,setArray]= useState([initialCount]);
-    const ANIMATION_SPEED_MS = 30;
+    const ANIMATION_SPEED_MS = 10;
  const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 const FINAL_COLOR ='limegreen';
@@ -38,12 +38,12 @@ const FINAL_COLOR ='limegreen';
         
     }
     const resetArray =()=>{
-    const size= prompt("no of bar graphs you want?");
+    const size= prompt("no of bar(< 100) graphs you want?");
 
     
             for (let i = 0; i < size; i++) {
                 
-                let randomNumber = Math.floor(Math.random() * 600 ) + 5;
+                let randomNumber = Math.floor(Math.random() * 500 ) + 5;
                 setArray((Array)=>[...Array,randomNumber]);
               //   const arrayBar = document.getElementsByClassName('array_bars');
               //    const barStyle= arrayBar[i].style;
@@ -52,7 +52,7 @@ const FINAL_COLOR ='limegreen';
          
        return 0;
                 }
-                const width= 1200/array.length;
+                const width= 900/array.length;
                   
  
 //quick sort  code
@@ -90,9 +90,10 @@ console.log(array);
 
      barStyle.backgroundColor = FINAL_COLOR;
      barStyle.height=`${value2}px`;
-    }, i * ANIMATION_SPEED_MS*10);
+    }, i * ANIMATION_SPEED_MS);
   
   }
+  
   }
 
   
@@ -128,15 +129,24 @@ const linear=()=>{
       if(bool=='true'){
       barStyle.backgroundColor = 'purple';
       count++;
+      document.getElementById('DISPLAY_RESULT_LS').style.visibility = 'visible'; 
       
       }
       else{
        barStyle.backgroundColor='red'; 
       }
 
+      if (i==animations.length-1){
+        if(!count)
+        document.getElementById('DISPLAY_RESULT_LS2').style.visibility = 'visible'; 
+      }
+
     }, i * ANIMATION_SPEED_MS*10);
 
+   
+
   }
+ 
 }
 
 // if(count){
@@ -229,11 +239,11 @@ const linear=()=>{
 </nav>
 
        <div className="content">
-       {/* <div>
+       <div>
        <h1 ID="DISPLAY_RESULT_LS" style={{visibility:'hidden'}}>KUDOS! MATCH FOUND.</h1>
        <h1 ID="DISPLAY_RESULT_SORT" style={{visibility:'hidden'}}> SORTED!✌️</h1>
        <h1 ID="DISPLAY_RESULT_LS2" style={{visibility:'hidden'}}>OOPS! NO MATCH.</h1>
-       </div> */}
+       </div>
 
        <div className= " array_section">
       
@@ -242,11 +252,11 @@ const linear=()=>{
            <div className="array_bars" key={index} style={{ backgroundColor:PRIMARY_COLOR, height:`${value}px`, width: `${width}px`} }></div> 
        ))}
 
-      
+     
         <div className="footer fixed-bottom">
       
       <div className="space">SRISHTY TAKYAR_2020  Sorting visualizer_© 
-   </div>
+  </div>
         </div> 
         
         </div>

@@ -3,10 +3,11 @@
 h1 {
   position: relative;
   z-index: 2;
-  font-size: 10em;
-  letter-spacing: 15px;
+  font-size: 7em;
+  letter-spacing: 10px;
   text-transform: uppercase;
-  transform: rotate(-10deg);
+  color: #6a492b;
+  transform: rotate(-5deg);
   text-shadow: 1px 1px hsl(50, 50%, 45%), 2px 2px hsl(50, 50%, 40%),
     3px 3px hsl(50, 50%, 35%), 4px 4px hsl(50, 50%, 34%),
     5px 5px hsl(50, 50%, 33%), 6px 6px hsl(50, 50%, 32%),

@@ -19,9 +19,9 @@ body nav {
 
 body .content .array_section {
   position: absolute;
-  justify-content: center;
-  bottom: 0;
-  max-width: 90%;
+  left: 4%;
+  bottom: 1%;
+  overflow: hidden;
   margin: 3%; }
   body .content .array_section .array_bars {
     display: inline-block;
@@ -56,10 +56,11 @@ h1 {
 h1 {
   position: relative;
   z-index: 2;
-  font-size: 10em;
-  letter-spacing: 15px;
+  font-size: 7em;
+  letter-spacing: 10px;
   text-transform: uppercase;
-  transform: rotate(-10deg);
+  color: #6a492b;
+  transform: rotate(-5deg);
   text-shadow: 1px 1px #ac9939, 2px 2px #998833, 3px 3px #86772d, 4px 4px #82742b, 5px 5px #7e702a, 6px 6px #7a6d29, 7px 7px #776928, 8px 8px #736626, 9px 9px #6f6325, 10px 10px #6b5f24, 10px 10px 30px rgba(0, 0, 0, 0.7); }
 
 body {

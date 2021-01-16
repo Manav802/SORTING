@@ -5,6 +5,7 @@ export function linearSearch(array, key){
         if(array[i] == key){   // == will be used because we donot know the data types( === req datatypes to be exactly same )
 
             animation.push([i,'true']);
+            break;
           
         }
         else{

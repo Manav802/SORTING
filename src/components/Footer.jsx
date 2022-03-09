@@ -6,9 +6,7 @@ function Footer(){
     return(
         <>
      <div className="footer fixed-bottom">
-      SRISHTY TAKYAR_2020  Sorting visualizer_© 
-     
-     
+      Prerna Malik00 project  
      </div>
         </>
     )
